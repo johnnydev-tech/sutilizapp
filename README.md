@@ -1,6 +1,6 @@
 # Resumo do Trabalho Final em React Native
 
-O projeto desenvolvido como trabalho final na matéria de React Native da UTFPR foi uma aplicação móvel que utiliza a biblioteca Expo para oferecer uma solução de “Suavizador de Ofensas”. O objetivo principal era criar uma ferramenta que ajudasse a transformar frases ofensivas em versões mais educadas e respeitosas. A aplicação foi projetada para ser intuitiva e acessível, com uma interface amigável que permite aos usuários inserir textos ofensivos e obter uma versão suavizada em tempo real.
+O projeto desenvolvido como trabalho final na matéria de React Native da UTFPR foi uma aplicação móvel que utiliza a biblioteca Expo para oferecer uma solução de “Suavizador de Ofensas”. O objetivo principal era criar uma ferramenta que ajudasse a transformar frases ofensivas em versões mais educadas e respeitosas. A aplicação foi projetada para que os usuários possam inserir textos ofensivos e obter uma versão suavizada em tempo real.
 
 
 Funcionalidades Principais:
