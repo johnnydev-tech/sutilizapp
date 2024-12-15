@@ -1,8 +1,9 @@
 import { suavizarOfensa } from "@/services/ai/generator_prompt";
 import styles from "@/styles";
 import { useState } from "react";
-import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Keyboard, Platform, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { MotiView } from 'moti';
+import CustomColors from "@/styles/custom_colors";
 
 export default function Index() {
   const [ofensa, setOfensa] = useState("")
@@ -28,7 +29,9 @@ export default function Index() {
       setIsLoading(false);
     }
 
-
+    if (Platform.OS === 'ios' || Platform.OS === 'android') {
+      Keyboard.dismiss();
+    }
   }
 
   return (
@@ -41,7 +44,8 @@ export default function Index() {
         onChangeText={setOfensa}
         value={ofensa}
         style={styles.input}
-        placeholder="Digite o evento que você quer evitar ..."></TextInput>
+        placeholderTextColor={CustomColors.placeHolder}
+        placeholder="Digite o que stá pensando..."></TextInput>
 
       <TouchableOpacity style={styles.button} onPress={callOfensa}>
         <Text style={styles.buttonText}>{isLoading ? "Ajustando o tom..." : "Suavizar a frase!"}</Text>
