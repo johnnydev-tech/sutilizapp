@@ -45,7 +45,7 @@ export default function Index() {
         value={ofensa}
         style={styles.input}
         placeholderTextColor={CustomColors.placeHolder}
-        placeholder="Digite o que stá pensando..."></TextInput>
+        placeholder="Digite o que está pensando..."></TextInput>
 
       <TouchableOpacity style={styles.button} onPress={callOfensa}>
         <Text style={styles.buttonText}>{isLoading ? "Ajustando o tom..." : "Suavizar a frase!"}</Text>
