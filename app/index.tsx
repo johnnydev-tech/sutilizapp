@@ -2,13 +2,19 @@ import { suavizarOfensa } from "@/services/ai/generator_prompt";
 import styles from "@/styles";
 import { useState } from "react";
 import { Keyboard, Platform, Text, TextInput, TouchableOpacity, View } from "react-native";
-import { MotiView } from 'moti';
+
 import CustomColors from "@/styles/custom_colors";
+import { faCopy, faCheckCircle } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import * as Clipboard from 'expo-clipboard';
+
+import { MotiView } from 'moti';
 
 export default function Index() {
   const [ofensa, setOfensa] = useState("")
   const [resposta, setResposta] = useState("")
   const [isLoading, setIsLoading] = useState(false)
+  const [isCopying, setIsCopying] = useState(false)
 
   const callOfensa = async () => {
     if (ofensa.length < 5) {
@@ -34,6 +40,12 @@ export default function Index() {
     }
   }
 
+  const copyToClipboard = async () => {
+    await Clipboard.setStringAsync(resposta);
+    setIsCopying(true);
+    setTimeout(() => setIsCopying(false), 1000);
+  }
+
   return (
     <View
       style={styles.container}
@@ -51,7 +63,6 @@ export default function Index() {
         <Text style={styles.buttonText}>{isLoading ? "Ajustando o tom..." : "Suavizar a frase!"}</Text>
       </TouchableOpacity>
 
-
       {
         resposta && (
           <MotiView
@@ -59,7 +70,24 @@ export default function Index() {
             from={{ opacity: 0, translateX: 200 }}
             animate={{ opacity: 1, translateX: 0 }}
           >
-            <Text style={styles.cardTitle}>Aqui está sua frase suavizada:</Text>
+            <View style={styles.copyContainer}>
+              <Text style={styles.cardTitle}>Aqui está sua frase suavizada:</Text>
+
+              <TouchableOpacity onPress={copyToClipboard}>
+                {
+                  isCopying ?
+                    <MotiView
+                      from={{ opacity: 0, translateY: -20 }}
+                      animate={{ opacity: 1, translateY: 0 }}
+                    >
+                      <FontAwesomeIcon icon={faCheckCircle} size={20} color="green" />
+                    </MotiView> :
+
+                    <FontAwesomeIcon icon={faCopy} size={20} />
+
+                }
+              </TouchableOpacity>
+            </View>
             <Text style={styles.cardText}>{resposta}</Text>
           </MotiView>
         )

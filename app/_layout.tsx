@@ -1,3 +1,4 @@
+import CustomColors from "@/styles/custom_colors";
 import { Stack } from "expo-router";
 
 export default function RootLayout() {
@@ -5,7 +6,7 @@ export default function RootLayout() {
     headerShown: true,
     headerTitle: "Ofenda com classe", 
     headerStyle: {
-      backgroundColor: '#6200ee', 
+      backgroundColor: CustomColors.primary, 
     },
     headerTintColor: '#ffffff', 
   }}

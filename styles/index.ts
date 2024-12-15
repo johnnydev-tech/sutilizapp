@@ -62,7 +62,13 @@ const styles = StyleSheet.create({
     cardText: {
         fontSize: 16,
         color: '#666'
-    }
+    },
+    copyContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        marginBottom: 10,
+      },
 })
 
 export default styles;

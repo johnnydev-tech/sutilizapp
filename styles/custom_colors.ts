@@ -1,5 +1,6 @@
 const CustomColors = {
-    placeHolder:'#333'
+    primary: '#6200ee',
+    placeHolder: '#333'
 }
 
 export default CustomColors

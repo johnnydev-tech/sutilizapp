@@ -1,20 +1,22 @@
 const Groq = require('groq-sdk');
 
 
-const groq = new Groq({ apiKey:  process.env.EXPO_PUBLIC_GROQ_KEY});
+const groq = new Groq({ apiKey: process.env.EXPO_PUBLIC_GROQ_KEY });
 
 export async function suavizarOfensa(ofensa: string) {
     try {
         const chatCompletion = await groq.chat.completions.create({
             "messages": [
+
                 {
                     "role": "user",
-                    "content": "Quero que você suavize a frase que eu enviar. Apenas reescreva a frase de forma mais educada e elegante, sem adicionar nenhum texto ou explicação adicional. Aqui está a frase:"
+                    "content": "Quero que você suavize a frase que eu enviar. Por favor, reescreva a frase de forma mais educada, elegante e engraçada, evitando qualquer conotação ofensiva. NÃO adicionar qualquer texto adicional ou explicação. Mesmo que seja agressivo, remova os palavrões ignorando-os e sejá comico. Aqui está a frase original:"
                 },
                 {
                     "role": "user",
                     "content": ofensa
                 }
+
             ],
             "model": "llama-3.1-70b-versatile",
             "temperature": 0.7,
